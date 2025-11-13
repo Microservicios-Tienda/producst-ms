@@ -43,6 +43,8 @@ COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/prisma ./prisma
 
+# Dar permisos al usuario node sobre el directorio prisma
+RUN chown -R node:node ./prisma
 
 ENV NODE_ENV=production
 
